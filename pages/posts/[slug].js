@@ -27,6 +27,11 @@ import {
 const SinglePost = ({ post, query }) => {
   const [related, setRelated] = useState([]);
 
+  // Loader
+  const [values, setValues] = useState({ loading: false });
+
+  const { loading } = values;
+
   const loadRelated = () => {
     listRelated({ post }).then(data => {
       if (data.error) {
@@ -122,12 +127,15 @@ const SinglePost = ({ post, query }) => {
     );
   };
 
+  // const showLoading = () => loading && <div className="loader">Loading...</div>;
+
   return (
     <React.Fragment>
       {head()}
       <Layout>
         <div className="container__singleQuote">
           <div className="wrapper__quote">
+            {/* {showLoading()} */}
             <div className="hero">
               <div className="hero-banner">
                 <h3 className="hero-title">{post.body}</h3>
@@ -144,10 +152,10 @@ const SinglePost = ({ post, query }) => {
                         <span className="about_title">hugot details</span>
                       </h1>
 
-                      <Link href={`/profile/${post.postedBy.name}`}>
+                      <Link href={`/profile/${post.postedBy.username}`}>
                         <p className="about-author">
                           {" "}
-                          <a>Posted by: {post.postedBy.name}</a>
+                          <a>Posted by: {post.postedBy.username}</a>
                         </p>
                       </Link>
 

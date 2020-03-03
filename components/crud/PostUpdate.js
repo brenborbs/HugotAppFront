@@ -295,8 +295,8 @@ const PostUpdate = ({ router }) => {
             <label className="label_inputs">Source</label>
             <select onChange={handleChange("source")}>
               <option value="select one">Please Select</option>
-              <option value="0">Sourced</option>
-              <option value="1">Unsourced</option>
+              <option value="0">Unsourced</option>
+              <option value="1">Sourced</option>
             </select>
           </div>
 
@@ -304,8 +304,8 @@ const PostUpdate = ({ router }) => {
             <label className="label_inputs">Verification</label>
             <select onChange={handleChange("verification")}>
               <option>Please Select</option>
-              <option value="0">Verified</option>
-              <option value="1">Unverified</option>
+              <option value="0">Unverified</option>
+              <option value="1">Verified</option>
             </select>
           </div>
 

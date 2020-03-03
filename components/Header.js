@@ -24,7 +24,9 @@ const Header = () => {
     <header id="header">
       <nav>
         <div id="nav-top">
-          <h3 className="nav__logo">{APP_NAME}</h3>
+          <Link href="/">
+            <h3 className="nav__logo">{APP_NAME}</h3>
+          </Link>
           <div id="menu-btn" onClick={toggle}>
             <div className="bar1"></div>
             <div className="bar2"></div>
@@ -34,8 +36,8 @@ const Header = () => {
 
         <ul id="links" className={navOpen ? "show" : "hide"}>
           <li>
-            <Link href="/categories/humor">
-              <a>Humor</a>
+            <Link href="/posts">
+              <a>Hugots</a>
             </Link>
           </li>
 
@@ -46,14 +48,20 @@ const Header = () => {
           </li>
 
           <li>
-            <Link href="/categories/music">
-              <a>Music</a>
+            <Link href="/tags/bisaya">
+              <a>Bisaya</a>
             </Link>
           </li>
 
           <li>
-            <Link href="/categories/food">
-              <a>Food</a>
+            <Link href="/tags/tagalog">
+              <a>Tagalog</a>
+            </Link>
+          </li>
+
+          <li>
+            <Link href="/blog">
+              <a>Blog</a>
             </Link>
           </li>
 

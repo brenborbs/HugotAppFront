@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import Router from "next/router";
 import { withRouter } from "next/router"; // same as props
-import { getCookie } from "../../actions/auth";
+import { getCookie, isAuth } from "../../actions/auth";
 import { getCategories } from "../../actions/category";
 import { getTags } from "../../actions/tag";
 import { createPost } from "../../actions/post";
@@ -64,6 +65,13 @@ const PostCreate = ({ router }) => {
         });
         setCategories([]);
         setTags([]);
+        if (isAuth() && isAuth().role === 1) {
+          // Router.replace(`/admin/crud/${router.query.slug}`);
+          Router.replace(`/posts`);
+        } else if (isAuth() && isAuth().role === 0) {
+          // Router.replace(`/user/crud/${router.query.slug}`);
+          Router.replace(`/posts`);
+        }
       }
     });
   };
@@ -234,8 +242,8 @@ const PostCreate = ({ router }) => {
             <label className="label_inputs">Source</label>
             <select onChange={handleChange("source")}>
               <option value="select one">Please Select</option>
-              <option value="0">Sourced</option>
-              <option value="1">Unsourced</option>
+              <option value="0">Unsourced</option>
+              <option value="1">Sourced</option>
             </select>
           </div>
 
@@ -243,8 +251,8 @@ const PostCreate = ({ router }) => {
             <label className="label_inputs">Verification</label>
             <select onChange={handleChange("verification")}>
               <option>Please Select</option>
-              <option value="0">Verified</option>
-              <option value="1">Unverified</option>
+              <option value="0">Unverified</option>
+              <option value="1">Verified</option>
             </select>
           </div>
 

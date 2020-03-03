@@ -50,6 +50,10 @@ const UserProfile = ({ user, posts, query }) => {
     ? `${API}/user/photo/${user.username}`
     : "/static/images/avatar.jpg";
 
+  const profileCover = user.username
+    ? "/static/images/noah-silliman.jpg"
+    : `${API}/user/photo/${user.username}`;
+
   return (
     <React.Fragment>
       {head()}
@@ -66,7 +70,7 @@ const UserProfile = ({ user, posts, query }) => {
                   style={{ width: "100%" }}
                   onError={i => (i.target.src = "/static/images/avatar.jpg")}
                 />
-                {/* <h1 className="f3 mb2">{user.name}</h1> */}
+                <h1 className="f3 mb2">{user.name}</h1>
                 <h2 className="f5 mt1 fw4 gray">
                   Joined {moment(user.createdAt).format("MMMM D YYYY")}
                 </h2>

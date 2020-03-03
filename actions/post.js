@@ -27,7 +27,7 @@ export const createPost = (post, token) => {
     .catch(err => console.log(err));
 };
 
-export const listBlogsWithCategoriesAndTags = (skip, limit) => {
+export const listPostsWithCategoriesAndTags = (skip, limit) => {
   const data = {
     limit,
     skip

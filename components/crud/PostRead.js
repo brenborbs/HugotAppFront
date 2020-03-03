@@ -46,11 +46,7 @@ const PostRead = ({ username }) => {
     if (isAuth() && isAuth().role === 0) {
       return (
         <Link href={`/user/crud/${post.slug}`}>
-          <i
-            className="fa fa-pencil"
-            aria-hidden="true"
-            style={{ fontSize: "28px", cursor: "pointer" }}
-          ></i>
+          <i className="fa fa-pencil" aria-hidden="true"></i>
         </Link>
       );
     } else if (isAuth() && isAuth().role === 1) {
