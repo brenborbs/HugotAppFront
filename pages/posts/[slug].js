@@ -97,7 +97,7 @@ const SinglePost = ({ post, query }) => {
       <div className="Demo__container">
         <div className="Demo__some-network">
           <FacebookShareButton
-            url={`${API}/blog/${post.slug}`}
+            url={`${API}/posts/${post.slug}`}
             quote={post.title}
             className="Demo__some-network__share-button"
           >
@@ -106,7 +106,7 @@ const SinglePost = ({ post, query }) => {
         </div>
         <div className="Demo__some-network">
           <TwitterShareButton
-            url={`${API}/post/${post.slug}`}
+            url={`${API}/posts/${post.slug}`}
             quote={post.title}
             className="Demo__some-network__share-button"
           >
@@ -115,7 +115,7 @@ const SinglePost = ({ post, query }) => {
         </div>
         <div className="Demo__some-network">
           <PinterestShareButton
-            url={`${API}/post/${post.slug}`}
+            url={`${API}/posts/${post.slug}`}
             windowWidth={750}
             windowHeight={600}
             className="Demo__some-network__share-button"
