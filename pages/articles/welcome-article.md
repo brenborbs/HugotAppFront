@@ -1,16 +1,21 @@
 ---
 title: "Welcome to this hugot maker web app"
 author: The Administrator
-date: 2020-07-10
-hero_image: ../static/images/ed-robertson.jpg
+date: 2020-04-04
+hero_image: ../static/images/hugotlanding.png
 ---
+### Welcome and thanks. You're contributions are very much appreciated.
 
-One day a girl was walking home late night after work or something. It was dark and around midnight.
+We’re excited to announce that the first Hugot Line website especially created for fans of both Tagalog and Bisaya hugot lines is finally here! It's just not a traditional website. Users can register, login and create their own hugot lines and share it on social media.
 
-She lived an apartment where they had elevator. She got in the elevator and when the door was about to close, a strange man with very red hoodie entered the elevator.
+### What to expect
 
-He apologized for scaring her and asked which floor she is heading to, without making an eye contact. She told him out of fear and the man casually press the button and the one below. As they were on the way, he asked her for her cell phone if he could use it but she declined out of suspicious and isolated herself in the corner.
+As mentioned above, interested users can register, login and create their own hugot lines. 
+They can add photos to be used as background for the hugot line.
+Simple advance search. 
+Users can create, edit and delete hugot lines
+Simple user profile with lists of their hugot lines created
 
-After seconds of silence, elevator arrived to the floor below the one girl was heading to and the door opened. The guy slowly walked out of the door and turned around facing toward the elevator and the girl, and just stared at her without any movement.
+### Continous development
 
-Excerpts taken from https://thoughtcatalog.com/christine-stockton/2018/06/ghost-stories
+This is an on-going personal project of ours and your feedback is gladly appreciated.

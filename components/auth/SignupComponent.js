@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { signup, isAuth } from "../../actions/auth";
+import { signup, isAuth, preSignup } from "../../actions/auth";
 import Link from "next/link";
 import Router from "next/router";
 
@@ -27,7 +27,7 @@ const SignupComponent = () => {
     setValues({ ...values, loading: true, error: false });
     const user = { name, email, password };
 
-    signup(user).then(data => {
+    preSignup(user).then(data => {
       if (data.error) {
         setValues({ ...values, error: data.error, loading: false });
       } else {
@@ -86,6 +86,16 @@ const SignupComponent = () => {
             placeholder="Password"
           />
         </div>
+        <div className="policy">
+          <p>
+            By clicking Register, you agree to our{" "}
+            <Link href="/terms">
+              <a>terms</a>
+            </Link>{" "}
+            .
+          </p>
+        </div>
+
         <button className="btn_login">Register</button>
       </form>
     );

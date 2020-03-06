@@ -5,6 +5,7 @@ import { APP_NAME } from "../config";
 import NProgress from "nprogress";
 import { signout, isAuth } from "../actions/auth";
 // import ActiveLink from "../helpers/activeLink";
+// import Submenu from "./Submenu";
 
 import "../node_modules/nprogress/nprogress.css";
 
@@ -41,11 +42,11 @@ const Header = () => {
             </Link>
           </li>
 
-          <li>
+          {/* <li>
             <Link href="/categories/love">
               <a>Love</a>
             </Link>
-          </li>
+          </li> */}
 
           <li>
             <Link href="/tags/bisaya">
@@ -65,13 +66,24 @@ const Header = () => {
             </Link>
           </li>
 
-          {/* <ActiveLink href="/">
-            <li>
-              <a>
-                <i className="fa fa-home" aria-hidden="true"></i>
-              </a>
-            </li>
-          </ActiveLink> */}
+          {/* <li className="submenu">
+            <a>
+              {" "}
+              <i className="fa fa-home" aria-hidden="true"></i>
+            </a>
+            <ul className="nav__submenu">
+              <li className="nav__submenu-item ">
+                <a>Our Company</a>
+              </li>
+              <li className="nav__submenu-item ">
+                <a>Our Team</a>
+              </li>
+              <li className="nav__submenu-item ">
+                <a>Our Portfolio</a>
+              </li>
+            </ul>
+          </li> */}
+
           {isAuth() && isAuth().role === 0 && (
             <Link href="/user">
               <li>

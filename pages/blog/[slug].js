@@ -49,13 +49,10 @@ export default function BlogTemplate(props, router) {
       <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
       <meta property="og:site_name" content={`${APP_NAME}`} />
 
-      <meta
-        property="og:image"
-        content={`${DOMAIN}/static/images/background-banner.jpg`}
-      />
+      <meta property="og:image" content={`${DOMAIN}/static/images/hugot.png`} />
       <meta
         property="og:image:secure_url"
-        ccontent={`${DOMAIN}/static/images/background-banner.jpg`}
+        ccontent={`${DOMAIN}/static/images/hugot.png`}
       />
       <meta property="og:image:type" content="image/jpg" />
       <meta property="fb:app_id" content={`${FB_APP_ID}`} />
@@ -95,6 +92,16 @@ export default function BlogTemplate(props, router) {
       </div>
     );
   };
+
+  const MyParagraph = props => (
+    <p style={{ marginBottom: "10px", marginTop: "10px" }}>{props.children}</p>
+  );
+
+  // see https://github.com/rexxars/react-markdown#node-types
+  const renderers = {
+    paragraph: props => <MyParagraph {...props} />
+  };
+
   return (
     <React.Fragment>
       {head()}
@@ -112,7 +119,7 @@ export default function BlogTemplate(props, router) {
               <div className="main">
                 <div className="lg">
                   <div className="article left_wrapper">
-                    <section className="left_card">
+                    <section className="left_card_blog">
                       <h1 className="about_info">
                         <span className="about_title">Details</span>
                       </h1>
@@ -133,9 +140,12 @@ export default function BlogTemplate(props, router) {
                           style={{ width: "100%", height: "auto" }}
                         />
                       </p>
-                      <span className="info_text">
-                        <ReactMarkdown source={markdownBody} />
-                      </span>
+                      <div className="blog-body">
+                        <ReactMarkdown
+                          source={markdownBody}
+                          renderers={renderers}
+                        />
+                      </div>
                     </section>
                   </div>
                 </div>

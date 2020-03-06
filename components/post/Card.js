@@ -2,6 +2,7 @@ import Link from "next/link";
 import moment from "moment";
 import { API } from "../../config";
 
+// Notes: OnError cannot image cannot show on tags and categories
 const Card = ({ post }) => {
   return (
     <React.Fragment>
@@ -11,6 +12,7 @@ const Card = ({ post }) => {
             src={`${API}/post/photo/${post.slug}`}
             alt={post.about}
             className="quote-img"
+            onError={i => (i.target.src = "/static/images/noah-silliman.jpg")}
           />
           <div className="overlay">
             <div className="content">

@@ -6,6 +6,7 @@ import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../config";
 import moment from "moment";
 // import ContactForm from "../../components/form/ContactForm";
 import isEmpty from "../../helpers/is-empty";
+import SmallCard from "../../components/post/SmallCard";
 
 const UserProfile = ({ user, posts, query }) => {
   const head = () => (
@@ -37,11 +38,11 @@ const UserProfile = ({ user, posts, query }) => {
   const showUserPosts = () => {
     return posts.map((post, i) => {
       return (
-        <li className="pv2" key={i}>
-          <Link href={`/posts/${post.slug}`}>
-            <a className="link-title">{post.about}</a>
-          </Link>
-        </li>
+        <Link href={`/posts/${post.slug}`} key={i}>
+          <li>
+            <SmallCard key={i} post={post} />
+          </li>
+        </Link>
       );
     });
   };
@@ -50,66 +51,118 @@ const UserProfile = ({ user, posts, query }) => {
     ? `${API}/user/photo/${user.username}`
     : "/static/images/avatar.jpg";
 
-  const profileCover = user.username
-    ? "/static/images/noah-silliman.jpg"
-    : `${API}/user/photo/${user.username}`;
+  // const profileCover = user.username
+  //   ? "/static/images/noah-silliman.jpg"
+  //   : `${API}/user/photo/${user.username}`;
 
   return (
     <React.Fragment>
       {head()}
       <Layout>
-        <div className="user-profile-container">
-          <div className="user-left-profile">
-            <article className="prof-color mw5 center bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
-              <div className="tc">
+        <div className="prof-container">
+          <div className="timeline-cover">
+            {/* Large Screens */}
+            <div className="timeline-nav-bar hid-sm hid-xs">
+              <div className="prof-row">
+                <div className="col-left">
+                  <div className="profile-info">
+                    <img
+                      src={photoURL}
+                      className="profile-photo"
+                      title="user-photo"
+                      alt="user profile"
+                      onError={i =>
+                        (i.target.src = "/static/images/avatar.jpg")
+                      }
+                    />
+                    <h3>{user.name}</h3>
+                    <p className="text-prof">{user.about}</p>
+                  </div>
+                </div>
+                <div className="col-right">
+                  <ul className="profile-menu">
+                    <li>
+                      {" "}
+                      {isEmpty(user.facebook && user.facebook) ? null : (
+                        <a href={user.facebook} target="_blank">
+                          <i className="fa fa-facebook-square fa-2x" />
+                        </a>
+                      )}
+                    </li>
+                    <li>
+                      {isEmpty(user.twitter && user.twitter) ? null : (
+                        <a href={user.twitter} target="_blank">
+                          <i className="fa fa-twitter-square fa-2x" />
+                        </a>
+                      )}
+                    </li>
+                    <li>
+                      {isEmpty(user.instagram && user.instagram) ? null : (
+                        <a href={user.instagram} target="_blank">
+                          <i className="fa fa-instagram fa-2x" />
+                        </a>
+                      )}
+                    </li>
+                  </ul>
+                  <ul className="follow-me"></ul>
+                </div>
+              </div>
+            </div>
+            {/* Large Screens */}
+            {/* Small Screens */}
+            <div className="navbar-mobile hidden-lg hidden-md">
+              <div className="profile-info">
                 <img
                   src={photoURL}
-                  className="br-100 h4 w4 dib ba b--black-05 pa2"
-                  title="Photo of a kitty staring at you"
+                  className="profile-photo"
+                  title="user-photo"
                   alt="user profile"
-                  style={{ width: "100%" }}
                   onError={i => (i.target.src = "/static/images/avatar.jpg")}
                 />
-                <h1 className="f3 mb2">{user.name}</h1>
-                <h2 className="f5 mt1 fw4 gray">
-                  Joined {moment(user.createdAt).format("MMMM D YYYY")}
-                </h2>
-                <div className="user-social-media">
-                  {isEmpty(user.facebook && user.facebook) ? null : (
-                    <a href={user.facebook} target="_blank">
-                      <i className="fa fa-facebook-square fa-2x" />
-                    </a>
-                  )}
-                  {isEmpty(user.twitter && user.twitter) ? null : (
-                    <a href={user.twitter} target="_blank">
-                      <i className="fa fa-twitter-square fa-2x" />
-                    </a>
-                  )}
-                  {isEmpty(user.instagram && user.instagram) ? null : (
-                    <a href={user.instagram} target="_blank">
-                      <i className="fa fa-instagram fa-2x" />
-                    </a>
-                  )}
-                </div>
+                <h3>{user.name}</h3>
+                <p className="text-prof">{user.about}</p>
               </div>
-            </article>
+              <div className="mobile-menu">
+                <ul className="list-inline">
+                  <li>
+                    {" "}
+                    {isEmpty(user.facebook && user.facebook) ? null : (
+                      <a href={user.facebook} target="_blank">
+                        <i className="fa fa-facebook-square fa-2x" />
+                      </a>
+                    )}
+                  </li>
+                  <li>
+                    {isEmpty(user.twitter && user.twitter) ? null : (
+                      <a href={user.twitter} target="_blank">
+                        <i className="fa fa-twitter-square fa-2x" />
+                      </a>
+                    )}
+                  </li>
+                  <li>
+                    {isEmpty(user.instagram && user.instagram) ? null : (
+                      <a href={user.instagram} target="_blank">
+                        <i className="fa fa-instagram fa-2x" />
+                      </a>
+                    )}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            {/* Small Screens */}
           </div>
-          <div className="user-right-profile">
-            <article className="prof-color center mv3 bg-white br3 ba b--black-10">
-              <div className="user-right-wrapper">
-                <div className="user-name-wrapper">
-                  <h1>{user.name}</h1>
-                  <p>{user.about}</p>
-                </div>
+          <div id="page-contents">
+            <div className="prof-row">
+              <div className="col-left"></div>
+              <div className="col-md-right">
+                <ul className="post-lists">{showUserPosts()}</ul>
               </div>
-            </article>
-            <article className="prof-color center mv3 bg-white br3 ba b--black-10">
-              <div className="user-right-wrapper">
-                <h3>Recent Posts</h3>
-                <ul className="list-group">{showUserPosts()}</ul>
+              <div className="col-md-full static">
+                <div className="stick-sidebar"></div>
               </div>
-            </article>
+            </div>
           </div>
+          {/* prof-container */}
         </div>
       </Layout>
     </React.Fragment>

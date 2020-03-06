@@ -16,14 +16,14 @@ const BlogList = props => {
       {props.allBlogs.length > 1 &&
         props.allBlogs.map(article => (
           <article className="blog-post-item">
-            <div className="blog-post-img-container">
+            {/* <div className="blog-post-img-container">
               <img
                 src={article.document.data.hero_image}
                 className="db"
                 alt={article.document.data.hero_image}
                 style={{ width: "100%", display: "block" }}
               />
-            </div>
+            </div> */}
             <div className="blog-post-text-container">
               <h1>{article.document.data.title}</h1>
 

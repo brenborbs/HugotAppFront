@@ -1,12 +1,22 @@
 import Layout from "../components/Layout";
+import { withRouter } from "next/router";
+import Link from "next/link";
 import SigninComponent from "../components/auth/SigninComponent";
 
-const Signin = () => {
+const Signin = ({ router }) => {
+  const showRedirectMessage = () => {
+    if (router.query.message) {
+      return <div className="alert-danger">{router.query.message}</div>;
+    } else {
+      return;
+    }
+  };
   return (
     <Layout>
       <React.Fragment>
         <div className="signin-banner">
           <div className="signin-container">
+            {showRedirectMessage()}
             <div className="login-main">
               <div className="main-text">
                 <h2>Login</h2>
@@ -27,4 +37,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default withRouter(Signin);

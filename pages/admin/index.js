@@ -50,7 +50,35 @@ const AdminIndex = () => {
             </div>
           </div>
           <div className="right_dash">
-            <div>Right</div>
+            <div className="dash-info">
+              <h2>Useful Info and Links</h2>
+              <div className="dash-info-wrapper">
+                <h4>
+                  We highly encouraged all users to follow proper posting
+                  manners such as:
+                </h4>
+                <div className="dash-list">
+                  <ul>
+                    <li>
+                      No nude photos allowed. If we find users posting using
+                      nude photos, admin will take down the post and disallow
+                      users to continue this app.
+                    </li>
+                    <li>
+                      Green humor or hugot lines can be accepted but we
+                      encouraged to refrain from using vulgar language
+                    </li>
+                  </ul>
+                </div>
+                <h4>
+                  If you want to know more, you can go to blog page and continue
+                  reading.
+                </h4>
+                <div className="dash-links">
+                  <Link href="/blog">Blog</Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </Admin>
