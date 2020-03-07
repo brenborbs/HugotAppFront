@@ -3,7 +3,7 @@ import Link from "next/link";
 import Layout from "../../components/Layout";
 import { userPublicProfile } from "../../actions/user";
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../config";
-import moment from "moment";
+// import moment from "moment";
 // import ContactForm from "../../components/form/ContactForm";
 import isEmpty from "../../helpers/is-empty";
 import SmallCard from "../../components/post/SmallCard";
@@ -75,7 +75,7 @@ const UserProfile = ({ user, posts, query }) => {
                         (i.target.src = "/static/images/avatar.jpg")
                       }
                     />
-                    <h3>{user.name}</h3>
+                    <h3>{user.username}</h3>
                     <p className="text-prof">{user.about}</p>
                   </div>
                 </div>
@@ -119,7 +119,7 @@ const UserProfile = ({ user, posts, query }) => {
                   alt="user profile"
                   onError={i => (i.target.src = "/static/images/avatar.jpg")}
                 />
-                <h3>{user.name}</h3>
+                <h3>{user.username}</h3>
                 <p className="text-prof">{user.about}</p>
               </div>
               <div className="mobile-menu">

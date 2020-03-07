@@ -145,7 +145,7 @@ const ProfileUpdate = () => {
           <div className="hide-child relative ba b--black-20 mw5 center">
             <img
               src={photoURL}
-              style={{ width: "100%" }}
+              style={{ height: "200px", width: "200px", borderRadius: "50%" }}
               className="db"
               alt="user profile"
               onError={i => (i.target.src = "/static/images/avatar.jpg")}

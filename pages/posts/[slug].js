@@ -28,9 +28,16 @@ const SinglePost = ({ post, query }) => {
   const [related, setRelated] = useState([]);
 
   // Loader
-  const [values, setValues] = useState({ loading: false });
+  const [modalOpen, setModalOpen] = useState(false);
 
-  const { loading } = values;
+  const toggleModal = () => {
+    // console.log("i was click!");
+    setModalOpen(!modalOpen);
+  };
+  const closeModal = () => {
+    // console.log("i was click!");
+    setModalOpen(!modalOpen);
+  };
 
   const loadRelated = () => {
     listRelated({ post }).then(data => {
@@ -148,27 +155,103 @@ const SinglePost = ({ post, query }) => {
                 <div className="lg">
                   <div className="article left_wrapper">
                     <section className="left_card">
-                      <h1 className="about_info">
-                        <span className="about_title">hugot details</span>
-                      </h1>
+                      <div style={{ margin: "30px" }}>
+                        <h1 className="about_info">
+                          <span className="about_title">hugot details</span>
+                        </h1>
 
-                      <Link href={`/profile/${post.postedBy.username}`}>
-                        <p className="about-author">
-                          {" "}
-                          <a>Posted by: {post.postedBy.username}</a>
-                        </p>
-                      </Link>
+                        <Link href={`/profile/${post.postedBy.username}`}>
+                          <p className="about-author">
+                            {" "}
+                            <a>Posted by: {post.postedBy.username}</a>
+                          </p>
+                        </Link>
 
-                      <div className="border_text">
-                        {post.source ? (
-                          <span className="border">Sourced</span>
-                        ) : (
-                          <span className="border">Unsourced</span>
-                        )}
+                        <div className="border_text">
+                          {post.source ? (
+                            <span className="border">Sourced</span>
+                          ) : (
+                            <span className="border">Unsourced</span>
+                          )}
+                        </div>
+                        <div className="info_text">
+                          <p>{post.about}</p>
+                        </div>
                       </div>
-                      <span className="info_text">
-                        <span>{post.about}</span>
-                      </span>
+                      <div className="hugot-content-wrapper">
+                        <figure>
+                          <ul>
+                            <li>
+                              <button
+                                onClick={toggleModal}
+                                className="btn-modal"
+                              >
+                                <div className="sm-card">
+                                  <div
+                                    className="sm-card-container"
+                                    style={{ position: "relative" }}
+                                  >
+                                    <img
+                                      src={`${API}/post/photo/${post.slug}`}
+                                      alt={post.about}
+                                      style={{
+                                        width: "100%",
+                                        display: "block"
+                                      }}
+                                      onError={i =>
+                                        (i.target.src =
+                                          "/static/images/noah-silliman.jpg")
+                                      }
+                                    />
+                                    <div className="overlay-sm">
+                                      <div className="content">
+                                        <p>
+                                          {post.body} <br />~ {post.author}
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </button>
+                            </li>
+                          </ul>
+                        </figure>
+                        <div className={modalOpen ? "modal" : "none"}>
+                          <div className="modal-content">
+                            <span onClick={closeModal} className="close">
+                              &times;
+                            </span>
+                            <div className="modal-content-container">
+                              <div className="sm-card">
+                                <div
+                                  className="modal-card-container"
+                                  style={{ position: "relative" }}
+                                >
+                                  <img
+                                    src={`${API}/post/photo/${post.slug}`}
+                                    alt={post.about}
+                                    style={{ width: "100%", display: "block" }}
+                                    onError={i =>
+                                      (i.target.src =
+                                        "/static/images/noah-silliman.jpg")
+                                    }
+                                  />
+                                  <div className="overlay-modal">
+                                    <div className="content">
+                                      <p>
+                                        {post.body} <br />~ {post.author}
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <p className="modal-footer-text">
+                              Presented by: hugot.com
+                            </p>
+                          </div>
+                        </div>
+                      </div>
                       <div className="long_btn">
                         <button className="grey_outline">
                           {post.verification ? (

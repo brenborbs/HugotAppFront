@@ -42,12 +42,6 @@ const Header = () => {
             </Link>
           </li>
 
-          {/* <li>
-            <Link href="/categories/love">
-              <a>Love</a>
-            </Link>
-          </li> */}
-
           <li>
             <Link href="/tags/bisaya">
               <a>Bisaya</a>
@@ -65,24 +59,6 @@ const Header = () => {
               <a>Blog</a>
             </Link>
           </li>
-
-          {/* <li className="submenu">
-            <a>
-              {" "}
-              <i className="fa fa-home" aria-hidden="true"></i>
-            </a>
-            <ul className="nav__submenu">
-              <li className="nav__submenu-item ">
-                <a>Our Company</a>
-              </li>
-              <li className="nav__submenu-item ">
-                <a>Our Team</a>
-              </li>
-              <li className="nav__submenu-item ">
-                <a>Our Portfolio</a>
-              </li>
-            </ul>
-          </li> */}
 
           {isAuth() && isAuth().role === 0 && (
             <Link href="/user">
