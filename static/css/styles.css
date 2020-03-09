@@ -172,14 +172,34 @@ nav ul li ul li {
   display: block !important;
 }
 #submenu {
+  top: 260px;
+  right: 350px;
+  position: absolute;
+  width: 180px;
+  margin-top: 1rem;
+  background: antiquewhite;
+}
+@media screen and (min-width: 690px) {
+  #submenu {
+    top: 80px;
+    right: 140px;
+  }
+}
+@media screen and (min-width: 798px) {
+  #submenu {
+    top: 50px;
+    right: 10px;
+  }
+}
+/* fallback sidemenu don't erase! */
+/* #submenu {
   position: absolute !important;
   top: 50px;
-  /* right: 180px; */
-  /* left: o; */
-  width: 200px;
+  right: 10px;
+  width: 180px;
   margin-top: 1rem;
-  background: var(--smoke);
-}
+  background: antiquewhite;
+} */
 /*============================
       INDEX LANDING PAGE
 ==============================*/

@@ -73,15 +73,14 @@ const Header = () => {
             )}
             {!isAuth() && (
               <a>
-                Login <i className="fa fa-angle-double-down"></i>
+                <i className="fa fa-angle-double-down"></i>
               </a>
             )}
             <ul id="submenu" className={smallOpen ? "submenuOpen" : null}>
               {isAuth() && isAuth().role === 0 && (
                 <Link href="/user">
                   <li>
-                    <a style={{ color: "tomato" }}>
-                      <i className="fa fa-rocket" aria-hidden="true"></i>{" "}
+                    <a style={{ color: "tomato", textAlign: "left" }}>
                       Dashboard
                     </a>
                   </li>
@@ -90,8 +89,7 @@ const Header = () => {
               {isAuth() && isAuth().role === 1 && (
                 <Link href="/admin">
                   <li>
-                    <a style={{ color: "tomato" }}>
-                      <i className="fa fa-rocket" aria-hidden="true"></i>
+                    <a style={{ color: "tomato", textAlign: "left" }}>
                       Dashboard
                     </a>
                   </li>
@@ -100,8 +98,7 @@ const Header = () => {
               {isAuth() && (
                 <Link href={`/profile/${isAuth().username}`}>
                   <li>
-                    <a style={{ color: "tomato" }}>
-                      <i className="fa fa-user-circle" aria-hidden="true"></i>{" "}
+                    <a style={{ color: "tomato", textAlign: "left" }}>
                       Profile
                     </a>
                   </li>
@@ -110,7 +107,7 @@ const Header = () => {
               {!isAuth() && (
                 <Link href="/signin">
                   <li>
-                    <a style={{ color: "tomato" }}>Signin</a>
+                    <a style={{ color: "tomato", textAlign: "left" }}>Signin</a>
                   </li>
                 </Link>
               )}
@@ -120,10 +117,7 @@ const Header = () => {
                     style={{ cursor: "pointer" }}
                     onClick={() => signout(() => Router.replace(`/signin`))}
                   >
-                    <a style={{ color: "tomato" }}>
-                      <i className="fa fa-sign-out" aria-hidden="true"></i>
-                      Logout
-                    </a>
+                    <a style={{ color: "tomato", textAlign: "left" }}>Logout</a>
                   </li>
                 </Link>
               )}
