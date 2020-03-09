@@ -38,6 +38,10 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
           <link
+            href="https://fonts.googleapis.com/css?family=Candal&display=swap"
+            rel="stylesheet"
+          ></link>
+          <link
             rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
           ></link>

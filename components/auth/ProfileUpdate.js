@@ -110,6 +110,13 @@ const ProfileUpdate = () => {
             success: true,
             loading: false
           });
+          if (isAuth() && isAuth().role === 1) {
+            // Router.replace(`/admin/crud/${router.query.slug}`);
+            Router.replace(`/profile/${username}`);
+          } else if (isAuth() && isAuth().role === 0) {
+            // Router.replace(`/user/crud/${router.query.slug}`);
+            Router.replace(`/profile/${username}`);
+          }
         });
       }
     });

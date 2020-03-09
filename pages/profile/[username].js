@@ -1,9 +1,10 @@
 import Head from "next/head";
 import Link from "next/link";
 import Layout from "../../components/Layout";
+import { isAuth } from "../../actions/auth";
 import { userPublicProfile } from "../../actions/user";
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../config";
-// import moment from "moment";
+import moment from "moment";
 // import ContactForm from "../../components/form/ContactForm";
 import isEmpty from "../../helpers/is-empty";
 import SmallCard from "../../components/post/SmallCard";
@@ -77,10 +78,14 @@ const UserProfile = ({ user, posts, query }) => {
                     />
                     <h3>{user.username}</h3>
                     <p className="text-prof">{user.about}</p>
+                    <div className="text-prof">
+                      <i className="fa fa-calendar" aria-hidden="true"></i>{" "}
+                      Joined {moment(user.createdAt).format("MMMM D YYYY")}
+                    </div>
                   </div>
                 </div>
                 <div className="col-right">
-                  <ul className="profile-menu">
+                  <ul className="list-inline profile-menu">
                     <li>
                       {" "}
                       {isEmpty(user.facebook && user.facebook) ? null : (
@@ -104,7 +109,15 @@ const UserProfile = ({ user, posts, query }) => {
                       )}
                     </li>
                   </ul>
-                  <ul className="follow-me"></ul>
+                  <ul className="follow-me list-inline">
+                    {isAuth() ? (
+                      <Link href="/user/update">
+                        <li>
+                          <button className="btn-edit">Edit Profile</button>
+                        </li>
+                      </Link>
+                    ) : null}
+                  </ul>
                 </div>
               </div>
             </div>
@@ -121,6 +134,10 @@ const UserProfile = ({ user, posts, query }) => {
                 />
                 <h3>{user.username}</h3>
                 <p className="text-prof">{user.about}</p>
+                <div className="text-prof">
+                  <i className="fa fa-calendar" aria-hidden="true"></i> Joined{" "}
+                  {moment(user.createdAt).format("MMMM D YYYY")}
+                </div>
               </div>
               <div className="mobile-menu">
                 <ul className="list-inline">
@@ -147,6 +164,11 @@ const UserProfile = ({ user, posts, query }) => {
                     )}
                   </li>
                 </ul>
+                {isAuth() ? (
+                  <Link href="/user/update">
+                    <button className="btn-edit">Edit Profile</button>
+                  </Link>
+                ) : null}
               </div>
             </div>
             {/* Small Screens */}
@@ -175,7 +197,7 @@ UserProfile.getInitialProps = ({ query }) => {
     if (data.error) {
       console.log(data.error);
     } else {
-      console.log(data);
+      // console.log(data);
       return { user: data.user, posts: data.posts, query };
     }
   });

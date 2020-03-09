@@ -66,7 +66,6 @@ nav ul li .fa-rocket {
 #header {
   display: flex;
   flex-direction: column;
-  /* min-height: 100vh; */
 }
 .hide {
   display: none;
@@ -81,7 +80,6 @@ nav ul li .fa-rocket {
   width: 35px;
   background-color: var(--SectionLightYellow);
   margin: 5px 0;
-  /* transition: transform 1s ease; */
 }
 nav {
   background-color: var(--light);
@@ -143,7 +141,6 @@ nav ul li a:hover {
   nav ul {
     flex: 1 1 auto;
     display: flex !important;
-    /*    important*/
     flex-wrap: wrap;
   }
   nav ul li {
@@ -166,7 +163,23 @@ nav ul li a:hover {
     margin-top: 5em;
   }
 }
+/* Hide submenu ul by default */
+nav ul li ul li {
+  display: none;
+}
 
+.submenuOpen li {
+  display: block !important;
+}
+#submenu {
+  position: absolute !important;
+  top: 50px;
+  /* right: 180px; */
+  /* left: o; */
+  width: 200px;
+  margin-top: 1rem;
+  background: var(--smoke);
+}
 /*============================
       INDEX LANDING PAGE
 ==============================*/
@@ -1278,7 +1291,7 @@ select {
 .profile-info h3 {
   margin-top: 20px;
   margin-bottom: 10px;
-  color: #27aae1;
+  color: var(--lightBlu);
 }
 .text-prof {
   color: #939598;
@@ -1292,6 +1305,33 @@ select {
   display: table-cell;
   vertical-align: middle;
   padding: 15px;
+}
+.timeline-cover .timeline-nav-bar ul.profile-menu {
+  margin: 0;
+  display: table;
+}
+.timeline-cover .timeline-nav-bar ul.follow-me {
+  margin: 0;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+}
+.timeline-cover .timeline-nav-bar .follow-me li {
+  padding: 6px 15px;
+  color: #fff;
+}
+.btn-edit {
+  background: var(--lightBlu);
+  padding: 7px 25px;
+  border: none;
+  font-size: 14px;
+  border-radius: 4px;
+  color: #fff;
+  position: relative;
+  font-weight: 600;
+  outline: none;
+  border-radius: 30px;
+  cursor: pointer;
 }
 .follow-me {
   margin: 0;

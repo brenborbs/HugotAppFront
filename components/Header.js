@@ -16,9 +16,13 @@ Router.onRouteChangeError = url => NProgress.done();
 
 const Header = () => {
   const [navOpen, setNavOpen] = useState(false);
+  const [smallOpen, setSmallOpen] = useState(false);
 
   const toggle = () => {
     setNavOpen(!navOpen);
+  };
+  const toggleSmall = () => {
+    setSmallOpen(!smallOpen);
   };
 
   return (
@@ -60,12 +64,87 @@ const Header = () => {
             </Link>
           </li>
 
+          <li onClick={toggleSmall}>
+            {isAuth() && (
+              <a>
+                {`Welcome ${isAuth().name}`}{" "}
+                <i className="fa fa-angle-double-down"></i>
+              </a>
+            )}
+            {!isAuth() && (
+              <a>
+                Login <i className="fa fa-angle-double-down"></i>
+              </a>
+            )}
+            <ul id="submenu" className={smallOpen ? "submenuOpen" : null}>
+              {isAuth() && isAuth().role === 0 && (
+                <Link href="/user">
+                  <li>
+                    <a style={{ color: "tomato" }}>
+                      <i className="fa fa-rocket" aria-hidden="true"></i>{" "}
+                      Dashboard
+                    </a>
+                  </li>
+                </Link>
+              )}
+              {isAuth() && isAuth().role === 1 && (
+                <Link href="/admin">
+                  <li>
+                    <a style={{ color: "tomato" }}>
+                      <i className="fa fa-rocket" aria-hidden="true"></i>
+                      Dashboard
+                    </a>
+                  </li>
+                </Link>
+              )}
+              {isAuth() && (
+                <Link href={`/profile/${isAuth().username}`}>
+                  <li>
+                    <a style={{ color: "tomato" }}>
+                      <i className="fa fa-user-circle" aria-hidden="true"></i>{" "}
+                      Profile
+                    </a>
+                  </li>
+                </Link>
+              )}
+              {!isAuth() && (
+                <Link href="/signin">
+                  <li>
+                    <a style={{ color: "tomato" }}>Signin</a>
+                  </li>
+                </Link>
+              )}
+              {isAuth() && (
+                <Link href="/signin">
+                  <li
+                    style={{ cursor: "pointer" }}
+                    onClick={() => signout(() => Router.replace(`/signin`))}
+                  >
+                    <a style={{ color: "tomato" }}>
+                      <i className="fa fa-sign-out" aria-hidden="true"></i>
+                      Logout
+                    </a>
+                  </li>
+                </Link>
+              )}
+            </ul>
+          </li>
+
+          {/* {isAuth() && (
+            <Link href={`/profile/${isAuth().username}`}>
+              <li>
+                <a>
+                  <i className="fa fa-user-circle" aria-hidden="true"></i>
+                </a>
+              </li>
+            </Link>
+          )}
+
           {isAuth() && isAuth().role === 0 && (
             <Link href="/user">
               <li>
                 <a>
                   <i className="fa fa-rocket" aria-hidden="true"></i>
-                  {/* {`${isAuth().name}'s Dashboard`} */}
                 </a>
               </li>
             </Link>
@@ -75,7 +154,6 @@ const Header = () => {
               <li>
                 <a>
                   <i className="fa fa-rocket" aria-hidden="true"></i>
-                  {/* {`${isAuth().name}'s Dashboard`} */}
                 </a>
               </li>
             </Link>
@@ -99,7 +177,7 @@ const Header = () => {
                 </a>
               </li>
             </Link>
-          )}
+          )} */}
         </ul>
       </nav>
     </header>
