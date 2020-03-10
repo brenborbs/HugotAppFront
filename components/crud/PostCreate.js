@@ -182,10 +182,12 @@ const PostCreate = ({ router }) => {
   return (
     // <React.fragment>
     <div className="right_create_wrapper">
-      <div className="create_right">
+      <div className="create-left">
+        <h2>Create</h2>
+      </div>
+      <div className="create-right">
         {showError()}
         {showSuccess()}
-        <h2>Create</h2>
         <form onSubmit={publishPost}>
           <div className="form-group">
             <label className="label_inputs">

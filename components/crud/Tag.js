@@ -142,7 +142,7 @@ const Tag = () => {
 
   return (
     // <div className="right_create_wrapper">
-    <div className="create_right">
+    <div className="create_right" style={{ marginTop: "2em" }}>
       {showSuccess()}
       {showRemoved()}
       {showError()}

@@ -7,8 +7,9 @@ const CategoryTag = () => {
   return (
     <Layout>
       <Admin>
-        <div className="cat-tags-container">
-          <div className="right_create_wrapper">
+        <div className="right_create_wrapper">
+          <div className="create-left"></div>
+          <div className="create-right">
             <Category />
             <Tag />
           </div>

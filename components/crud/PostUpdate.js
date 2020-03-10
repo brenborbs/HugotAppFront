@@ -236,10 +236,12 @@ const PostUpdate = ({ router }) => {
 
   return (
     <div className="right_create_wrapper">
-      <div className="create_right">
+      <div className="create-left">
+        <h2>Update</h2>
+      </div>
+      <div className="create-right">
         {showError()}
         {showSuccess()}
-        <h2>Update Hugot Line</h2>
         <form onSubmit={editPost}>
           <div className="form-group">
             <label className="label_inputs">

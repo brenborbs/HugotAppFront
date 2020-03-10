@@ -283,6 +283,36 @@ const SinglePost = ({ post, query }) => {
                         </div>
                       </div>
                     </aside>
+                    <aside>
+                      <div className="topics_wrapper">
+                        <h2>Follow Us</h2>
+                        <div className="topics_list">
+                          <ul className="social-links">
+                            <Link href="/">
+                              <li>
+                                <a>
+                                  <i className="fa fa-facebook"></i>
+                                </a>
+                              </li>
+                            </Link>
+                            <Link href="/">
+                              <li>
+                                <a>
+                                  <i className="fa fa-twitter"></i>
+                                </a>
+                              </li>
+                            </Link>
+                            <Link href="/">
+                              <li>
+                                <a>
+                                  <i className="fa fa-instagram"></i>
+                                </a>
+                              </li>
+                            </Link>
+                          </ul>
+                        </div>
+                      </div>
+                    </aside>
                   </div>
                 </div>
               </div>
