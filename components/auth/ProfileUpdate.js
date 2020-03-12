@@ -145,8 +145,11 @@ const ProfileUpdate = () => {
     : "/static/images/avatar.jpg";
 
   return (
-    <div className="profile-container">
-      <div className="profile-right">
+    <div className="profile-left">
+      <div className="profile-left-container">
+        {showSuccess()}
+        {showError()}
+        {showLoading()}
         <h2>Profile Update</h2>
         <div className="tc pa3 pa5-ns">
           <div className="hide-child relative ba b--black-20 mw5 center">
@@ -159,45 +162,39 @@ const ProfileUpdate = () => {
             />
           </div>
         </div>
-      </div>
-      <div className="profile-left">
-        <div className="profile-left-container">
-          {showSuccess()}
-          {showError()}
-          {showLoading()}
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label className="label_inputs">
-                <i className="fa fa-file-image-o" aria-hidden="true"></i>Profile
-                Photo
-              </label>
-              <small className="text-muted">Max size: 1mb</small>
-              <input
-                onChange={handleChange("photo")}
-                type="file"
-                accept="image/*"
-                className="file_input"
-              />
-            </div>
-            <div className="form-group">
-              <label className="label_inputs">Username</label>
-              <input
-                value={username}
-                onChange={handleChange("username")}
-                type="text"
-                placeholder="Your username"
-              />
-            </div>
-            <div className="form-group">
-              <label className="label_inputs">Name</label>
-              <input
-                value={name}
-                onChange={handleChange("name")}
-                type="text"
-                placeholder="Your name"
-              />
-            </div>
-            {/* <div className="form-group">
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label className="label_inputs">
+              <i className="fa fa-file-image-o" aria-hidden="true"></i>Profile
+              Photo
+            </label>
+            <small className="text-muted">Max size: 1mb</small>
+            <input
+              onChange={handleChange("photo")}
+              type="file"
+              accept="image/*"
+              className="file_input"
+            />
+          </div>
+          <div className="form-group">
+            <label className="label_inputs">Username</label>
+            <input
+              value={username}
+              onChange={handleChange("username")}
+              type="text"
+              placeholder="Your username"
+            />
+          </div>
+          <div className="form-group">
+            <label className="label_inputs">Name</label>
+            <input
+              value={name}
+              onChange={handleChange("name")}
+              type="text"
+              placeholder="Your name"
+            />
+          </div>
+          {/* <div className="form-group">
               <label className="label_inputs">Email</label>
               <input
                 value={email}
@@ -206,65 +203,64 @@ const ProfileUpdate = () => {
                 placeholder="Your email"
               />
             </div> */}
-            <div className="form-group">
-              <label className="label_inputs">About</label>
-              <textarea
-                value={about}
-                onChange={handleChange("about")}
-                type="text"
-                placeholder="Write about yourself..."
-              ></textarea>
-            </div>
-            <div className="form-group">
-              <div className="social-wrap">
-                <span className="social-profile">
-                  <i className="fa fa-facebook" />
-                </span>
-                <input
-                  onChange={handleChange("facebook")}
-                  type="text"
-                  value={facebook}
-                  className="form-control"
-                />
-              </div>
-            </div>
-            <div className="form-group">
-              <div className="social-wrap">
-                <span className="social-profile">
-                  <i className="fa fa-twitter" />
-                </span>
-                <input
-                  onChange={handleChange("twitter")}
-                  type="text"
-                  value={twitter}
-                  className="form-control"
-                />
-              </div>
-            </div>
-            <div className="form-group">
-              <div className="social-wrap">
-                <span className="social-profile">
-                  <i className="fa fa-instagram" />
-                </span>
-                <input
-                  onChange={handleChange("instagram")}
-                  type="text"
-                  value={instagram}
-                  className="form-control"
-                />
-              </div>
-            </div>
-            <div className="form-group">
-              <label className="label_inputs">Password</label>
+          <div className="form-group">
+            <label className="label_inputs">About</label>
+            <textarea
+              value={about}
+              onChange={handleChange("about")}
+              type="text"
+              placeholder="Write about yourself..."
+            ></textarea>
+          </div>
+          <div className="form-group">
+            <div className="social-wrap">
+              <span className="social-profile">
+                <i className="fa fa-facebook" />
+              </span>
               <input
-                value={password}
-                onChange={handleChange("password")}
-                type="password"
+                onChange={handleChange("facebook")}
+                type="text"
+                value={facebook}
+                className="form-control"
               />
             </div>
-            <button className="btn_create">Update Profile</button>
-          </form>
-        </div>
+          </div>
+          <div className="form-group">
+            <div className="social-wrap">
+              <span className="social-profile">
+                <i className="fa fa-twitter" />
+              </span>
+              <input
+                onChange={handleChange("twitter")}
+                type="text"
+                value={twitter}
+                className="form-control"
+              />
+            </div>
+          </div>
+          <div className="form-group">
+            <div className="social-wrap">
+              <span className="social-profile">
+                <i className="fa fa-instagram" />
+              </span>
+              <input
+                onChange={handleChange("instagram")}
+                type="text"
+                value={instagram}
+                className="form-control"
+              />
+            </div>
+          </div>
+          <div className="form-group">
+            <label className="label_inputs">Password</label>
+            <input
+              value={password}
+              onChange={handleChange("password")}
+              type="password"
+            />
+          </div>
+          <button className="btn_create">Update Profile</button>
+        </form>
       </div>
     </div>
   );

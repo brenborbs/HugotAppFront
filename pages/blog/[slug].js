@@ -1,6 +1,7 @@
 import * as React from "react";
 import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
+import Link from "next/link";
 import Layout from "../../components/Layout";
 import Head from "next/head";
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../config";
@@ -152,6 +153,36 @@ export default function BlogTemplate(props, router) {
                 <div className="sm">
                   <div className="right_wrapper">
                     <Search />
+                    <aside>
+                      <div className="topics_wrapper">
+                        <h2>Follow Us</h2>
+                        <div className="topics_list">
+                          <ul className="social-links">
+                            <Link href="/">
+                              <li>
+                                <a>
+                                  <i className="fa fa-facebook"></i>
+                                </a>
+                              </li>
+                            </Link>
+                            <Link href="/">
+                              <li>
+                                <a>
+                                  <i className="fa fa-twitter"></i>
+                                </a>
+                              </li>
+                            </Link>
+                            <Link href="/">
+                              <li>
+                                <a>
+                                  <i className="fa fa-instagram"></i>
+                                </a>
+                              </li>
+                            </Link>
+                          </ul>
+                        </div>
+                      </div>
+                    </aside>
                   </div>
                 </div>
               </div>

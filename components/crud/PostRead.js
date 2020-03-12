@@ -81,7 +81,9 @@ const PostRead = ({ username }) => {
   return (
     <div className="create_right">
       {message && <div className="alert-success">{message}</div>}
-      <h2>Manage Lines</h2>
+      <h2>
+        <i className="fa fa-table" aria-hidden="true"></i> Manage Lines
+      </h2>
       <div className="manage_line">
         <div className="overflow-auto">
           <table className="f6 w-100 mw8 center" cellSpacing="0">

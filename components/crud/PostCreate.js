@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Router from "next/router";
+import Link from "next/link";
 import { withRouter } from "next/router"; // same as props
 import { getCookie, isAuth } from "../../actions/auth";
 import { getCategories } from "../../actions/category";
@@ -181,15 +182,14 @@ const PostCreate = ({ router }) => {
 
   return (
     // <React.fragment>
-    <div className="right_create_wrapper">
-      <div className="create-left">
-        <h2>Create</h2>
-      </div>
+
+    <div className="right_dash">
       <div className="create-right">
         {showError()}
         {showSuccess()}
         <form onSubmit={publishPost}>
-          <div className="form-group">
+          <div className="form-group" style={{ marginBottom: "50px" }}>
+            <h3>1. Select Photo</h3>
             <label className="label_inputs">
               <i className="fa fa-file-image-o" aria-hidden="true"></i>Photo
             </label>
@@ -203,6 +203,7 @@ const PostCreate = ({ router }) => {
             />
           </div>
           <div className="form-group">
+            <h3>2. Content</h3>
             <label className="label_inputs">About</label>
             <input
               value={about}
@@ -220,7 +221,7 @@ const PostCreate = ({ router }) => {
               placeholder="Write hugot line here..."
             ></textarea>
           </div>
-          <div className="form-group">
+          <div className="form-group" style={{ marginBottom: "50px" }}>
             <label className="label_inputs">Author</label>
             <input
               value={author}
@@ -231,16 +232,18 @@ const PostCreate = ({ router }) => {
           </div>
 
           <div className="form-checkbox">
+            <h3>3. Categories and Tags</h3>
             <label className="label_inputs">Category</label>
             {showCategories()}
           </div>
 
-          <div className="form-checkbox">
+          <div className="form-checkbox" style={{ marginBottom: "50px" }}>
             <label className="label_inputs">Tags</label>
             {showTags()}
           </div>
 
           <div className="form-group">
+            <h3>4. Source and Verification</h3>
             <label className="label_inputs">Source</label>
             <select onChange={handleChange("source")}>
               <option value="select one">Please Select</option>
@@ -262,6 +265,7 @@ const PostCreate = ({ router }) => {
         </form>
       </div>
     </div>
+
     // </React.fragment>
   );
 };

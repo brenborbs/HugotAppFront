@@ -4,6 +4,7 @@ import Router from "next/router";
 import { APP_NAME } from "../config";
 import NProgress from "nprogress";
 import { signout, isAuth } from "../actions/auth";
+import { API } from "../config";
 // import ActiveLink from "../helpers/activeLink";
 // import Submenu from "./Submenu";
 
@@ -67,8 +68,7 @@ const Header = () => {
           <li onClick={toggleSmall}>
             {isAuth() && (
               <a>
-                {`Welcome ${isAuth().name}`}{" "}
-                <i className="fa fa-angle-double-down"></i>
+                {`${isAuth().name}`} <i className="fa fa-angle-double-down"></i>
               </a>
             )}
             {!isAuth() && (
@@ -80,34 +80,28 @@ const Header = () => {
               {isAuth() && isAuth().role === 0 && (
                 <Link href="/user">
                   <li>
-                    <a style={{ color: "tomato", textAlign: "left" }}>
-                      Dashboard
-                    </a>
+                    <a style={{ textAlign: "left" }}>Dashboard</a>
                   </li>
                 </Link>
               )}
               {isAuth() && isAuth().role === 1 && (
                 <Link href="/admin">
                   <li>
-                    <a style={{ color: "tomato", textAlign: "left" }}>
-                      Dashboard
-                    </a>
+                    <a style={{ textAlign: "left" }}>Dashboard</a>
                   </li>
                 </Link>
               )}
               {isAuth() && (
                 <Link href={`/profile/${isAuth().username}`}>
                   <li>
-                    <a style={{ color: "tomato", textAlign: "left" }}>
-                      Profile
-                    </a>
+                    <a style={{ textAlign: "left" }}>Profile</a>
                   </li>
                 </Link>
               )}
               {!isAuth() && (
                 <Link href="/signin">
                   <li>
-                    <a style={{ color: "tomato", textAlign: "left" }}>Signin</a>
+                    <a style={{ textAlign: "left" }}>Signin</a>
                   </li>
                 </Link>
               )}
@@ -117,7 +111,7 @@ const Header = () => {
                     style={{ cursor: "pointer" }}
                     onClick={() => signout(() => Router.replace(`/signin`))}
                   >
-                    <a style={{ color: "tomato", textAlign: "left" }}>Logout</a>
+                    <a style={{ textAlign: "left" }}>Logout</a>
                   </li>
                 </Link>
               )}
