@@ -11,9 +11,54 @@ const DashInfo = () => {
       {/* dash-info-wrapper */}
       <div className="dash-info-wrapper">
         <div className="dash-user-info">
-          <h3>Welcome to Hugot Line App maker</h3>
-          <p>We hope that you enjoy using this app</p>
+          <Link href="/">
+            <div
+              className="dash-info-cell"
+              style={{ backgroundColor: "mediumaquamarine" }}
+            >
+              <div className="internal-info">
+                <i
+                  className="fa fa-home"
+                  aria-hidden="true"
+                  style={{ fontSize: "40px", color: "white" }}
+                ></i>
+                <p>All Posts</p>
+              </div>
+            </div>
+          </Link>
+          <div className="dash-info-cell">
+            <Link href="/blog">
+              <div
+                className="dash-info-cell"
+                style={{ backgroundColor: "silver" }}
+              >
+                <div className="internal-info">
+                  <i
+                    className="fa fa-newspaper-o"
+                    aria-hidden="true"
+                    style={{ fontSize: "40px", color: "white" }}
+                  ></i>
+                  <p>Blog</p>
+                </div>
+              </div>
+            </Link>
+          </div>
+          <div
+            className="dash-info-cell"
+            style={{ backgroundColor: "mediumpurple" }}
+          >
+            <div className="internal-info">
+              <p
+                style={{ fontSize: "22px", color: "white", paddingTop: "10px" }}
+              >
+                {" "}
+                {new Date().toLocaleString()}
+              </p>
+              <p>Today</p>
+            </div>
+          </div>
         </div>
+
         <div className="inside-dash-info">
           <div className="info-cell">
             <div className="inside-cell">
@@ -72,7 +117,6 @@ const DashInfo = () => {
                   If you want to know more, you can go to blog page and continue
                   reading.
                 </li>
-                <Link href="/blog">Blog</Link>
               </ul>
             </div>
           </div>

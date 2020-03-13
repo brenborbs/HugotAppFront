@@ -3,7 +3,7 @@ import { API } from "../../config";
 const SmallCard = ({ post }) => {
   return (
     <React.Fragment>
-      <div className="sm-card">
+      <div className="sm-card-prof">
         <div className="sm-card-container" style={{ position: "relative" }}>
           <img
             src={`${API}/post/photo/${post.slug}`}

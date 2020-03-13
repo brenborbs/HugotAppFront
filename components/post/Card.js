@@ -24,23 +24,16 @@ const Card = ({ post }) => {
             </div>
           </div>
         </div>
-        <div className="quote-footer">
+        {/* <div className="quote-footer">
           <div className="quote-info">
-            {/* <Link href={`/profile/${post.postedBy.name}`}> */}
             <a>
               {" "}
               <p className="quote-btn">
                 Posted on {moment(post.updatedAt).format("MMMM D, YYYY")}
-                {/* {post.postedBy.name} */}
               </p>
             </a>
-            {/* </Link> */}
-
-            {/* <div className="quote-details"> */}
-
-            {/* </div> */}
           </div>
-        </div>
+        </div> */}
       </article>
     </React.Fragment>
   );
