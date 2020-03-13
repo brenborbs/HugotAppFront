@@ -124,13 +124,27 @@ const ProfileUpdate = () => {
 
   const showError = () => (
     <div className="alert-error" style={{ display: error ? "" : "none" }}>
-      {error}
+      <div className="alert-icon">
+        <i
+          className="fa fa-exclamation-circle"
+          aria-hidden="true"
+          style={{ color: "#f44336" }}
+        ></i>
+      </div>
+      <div className="alert-message">{error}</div>
     </div>
   );
 
   const showSuccess = () => (
     <div className="alert-success" style={{ display: success ? "" : "none" }}>
-      Profile updated
+      <div className="alert-icon">
+        <i
+          className="fa fa-check-circle-o"
+          aria-hidden="true"
+          style={{ color: "#4caf50" }}
+        ></i>
+      </div>
+      <div className="alert-message">Profile Updated</div>
     </div>
   );
 

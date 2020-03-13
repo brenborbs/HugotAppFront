@@ -170,13 +170,27 @@ const PostCreate = ({ router }) => {
 
   const showError = () => (
     <div className="alert-error" style={{ display: error ? "" : "none" }}>
-      {error}
+      <div className="alert-icon">
+        <i
+          className="fa fa-exclamation-circle"
+          aria-hidden="true"
+          style={{ color: "#f44336" }}
+        ></i>
+      </div>
+      <div className="alert-message">{error}</div>
     </div>
   );
 
   const showSuccess = () => (
     <div className="alert-success" style={{ display: success ? "" : "none" }}>
-      {success}
+      <div className="alert-icon">
+        <i
+          className="fa fa-check-circle-o"
+          aria-hidden="true"
+          style={{ color: "#4caf50" }}
+        ></i>
+      </div>
+      <div className="alert-message">{success}</div>
     </div>
   );
 

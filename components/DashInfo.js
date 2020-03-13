@@ -3,18 +3,13 @@ import Link from "next/link";
 const DashInfo = () => {
   return (
     <div className="dash-info">
-      <div className="dash-info-title">
-        <h2>
-          <i className="fa fa-info-circle" aria-hidden="true"></i> Useful Info
-        </h2>
-      </div>
       {/* dash-info-wrapper */}
       <div className="dash-info-wrapper">
         <div className="dash-user-info">
           <Link href="/">
             <div
               className="dash-info-cell"
-              style={{ backgroundColor: "mediumaquamarine" }}
+              style={{ backgroundColor: "silver" }}
             >
               <div className="internal-info">
                 <i
@@ -43,10 +38,7 @@ const DashInfo = () => {
               </div>
             </Link>
           </div>
-          <div
-            className="dash-info-cell"
-            style={{ backgroundColor: "mediumpurple" }}
-          >
+          <div className="dash-info-cell" style={{ backgroundColor: "silver" }}>
             <div className="internal-info">
               <p
                 style={{ fontSize: "22px", color: "white", paddingTop: "10px" }}
@@ -58,7 +50,13 @@ const DashInfo = () => {
             </div>
           </div>
         </div>
-
+        {/* title */}
+        <div className="dash-info-title">
+          <h2>
+            <i className="fa fa-info-circle" aria-hidden="true"></i> Useful Info
+          </h2>
+        </div>
+        {/* title */}
         <div className="inside-dash-info">
           <div className="info-cell">
             <div className="inside-cell">

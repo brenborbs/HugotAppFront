@@ -58,9 +58,36 @@ const ResetPassword = ({ router }) => {
   );
 
   const showError = () =>
-    error ? <div className="alert alert-danger">{error}</div> : "";
+    error ? (
+      <div className="alert-danger">
+        <div className="alert-icon">
+          <i
+            className="fa fa-exclamation-circle"
+            aria-hidden="true"
+            style={{ color: "#f44336" }}
+          ></i>
+        </div>
+        <div className="alert-message">{error}</div>
+      </div>
+    ) : (
+      ""
+    );
+
   const showMessage = () =>
-    message ? <div className="alert alert-success">{message}</div> : "";
+    message ? (
+      <div className="alert-info">
+        <div className="alert-icon">
+          <i
+            className="fa fa-check-circle-o"
+            aria-hidden="true"
+            style={{ color: "#4caf50" }}
+          ></i>
+        </div>
+        <div className="alert-message">{message}</div>
+      </div>
+    ) : (
+      ""
+    );
 
   return (
     <Layout>
