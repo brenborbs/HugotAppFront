@@ -105,7 +105,11 @@ const SigninComponent = () => {
             placeholder="Password"
           />
         </div>
-        <button className="btn_login">Login</button>
+        <button className="btn_login">
+          {loading && <i className="fa fa-refresh fa-spin"></i>}
+          {loading && <span> Logging in...</span>}
+          {!loading && <span>Login</span>}
+        </button>
       </form>
     );
   };

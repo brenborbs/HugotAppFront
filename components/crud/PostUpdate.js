@@ -24,6 +24,7 @@ const PostUpdate = ({ router }) => {
     author: "",
     source: "",
     verification: "",
+    loading: false,
     hidePublishButton: false
   });
 
@@ -36,6 +37,7 @@ const PostUpdate = ({ router }) => {
     body,
     author,
     source,
+    loading,
     verification,
     hidePublishButton
   } = values;
@@ -200,9 +202,10 @@ const PostUpdate = ({ router }) => {
 
   const editPost = e => {
     e.preventDefault();
+    setValues({ ...values, loading: true, error: false });
     updatePost(formData, token, router.query.slug).then(data => {
       if (data.error) {
-        setValues({ ...values, error: data.error });
+        setValues({ ...values, error: data.error, loading: false });
       } else {
         setValues({
           ...values,
@@ -311,7 +314,13 @@ const PostUpdate = ({ router }) => {
           </select>
         </div>
 
-        <button className="btn_create">Update Line</button>
+        <button className="btn_create">
+          {loading && (
+            <i className="fa fa-refresh fa-spin" style={{ color: "white" }}></i>
+          )}
+          {loading && <span> Updating...</span>}
+          {!loading && <span>Update Line</span>}
+        </button>
       </form>
     </div>
   );

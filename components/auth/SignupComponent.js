@@ -124,7 +124,11 @@ const SignupComponent = () => {
           </p>
         </div>
 
-        <button className="btn_login">Register</button>
+        <button className="btn_login">
+          {loading && <i className="fa fa-refresh fa-spin"></i>}
+          {loading && <span> Registering...</span>}
+          {!loading && <span>Register</span>}
+        </button>
       </form>
     );
   };

@@ -25,6 +25,7 @@ const PostCreate = ({ router }) => {
     author: "",
     source: "",
     verification: "",
+    loading: false,
     hidePublishButton: false
   });
 
@@ -36,6 +37,7 @@ const PostCreate = ({ router }) => {
     about,
     body,
     author,
+    loading,
     source,
     verification,
     hidePublishButton
@@ -51,10 +53,11 @@ const PostCreate = ({ router }) => {
 
   const publishPost = e => {
     e.preventDefault();
+    setValues({ ...values, loading: true, error: false });
     // console.log('ready to publishPost');
     createPost(formData, token).then(data => {
       if (data.error) {
-        setValues({ ...values, error: data.error });
+        setValues({ ...values, error: data.error, loading: false });
       } else {
         setValues({
           ...values,
@@ -275,7 +278,16 @@ const PostCreate = ({ router }) => {
             </select>
           </div>
 
-          <button className="btn_create">Add Line</button>
+          <button className="btn_create">
+            {loading && (
+              <i
+                className="fa fa-refresh fa-spin"
+                style={{ color: "white" }}
+              ></i>
+            )}
+            {loading && <span> Creating...</span>}
+            {!loading && <span>Add Line</span>}
+          </button>
         </form>
       </div>
     </div>

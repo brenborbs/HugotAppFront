@@ -9,9 +9,10 @@ const Category = () => {
     success: false,
     categories: [],
     removed: false,
-    reload: false
+    reload: false,
+    loading: false
   });
-  const { name, error, success, categories, removed, reload } = values;
+  const { name, error, success, categories, removed, reload, loading } = values;
   const token = getCookie("token");
 
   // load all categories during render
@@ -74,14 +75,21 @@ const Category = () => {
 
   const clickSubmit = e => {
     e.preventDefault();
+    setValues({ ...values, loading: true, error: false });
     // console.log('create category', name);
     create({ name }, token).then(data => {
       if (data.error) {
-        setValues({ ...values, error: data.error, success: false });
+        setValues({
+          ...values,
+          error: data.error,
+          success: false,
+          loading: false
+        });
       } else {
         setValues({
           ...values,
           error: false,
+          loading: false,
           success: true,
           name: ""
           // removed: !removed,
@@ -104,19 +112,52 @@ const Category = () => {
   // error! cannot show this alert
   const showSuccess = () => {
     if (success) {
-      return <div className="success">Category has been added</div>;
+      return (
+        <div className="alert-info" style={{ marginBottom: "10px" }}>
+          <div className="alert-icon">
+            <i
+              className="fa fa-check-circle-o"
+              aria-hidden="true"
+              style={{ color: "#4caf50" }}
+            ></i>
+          </div>
+          <div className="alert-message">Category has been added</div>
+        </div>
+      );
     }
   };
 
   const showError = () => {
     if (error) {
-      return <div className="warning">Category already existed!</div>;
+      return (
+        <div className="alert-danger">
+          <div className="alert-icon">
+            <i
+              className="fa fa-exclamation-circle"
+              aria-hidden="true"
+              style={{ color: "#f44336" }}
+            ></i>
+          </div>
+          <div className="alert-message">Category allready existed!</div>
+        </div>
+      );
     }
   };
 
   const showRemoved = () => {
     if (removed) {
-      return <div className="remove">Category has been removed!</div>;
+      return (
+        <div className="alert-info" style={{ marginBottom: "10px" }}>
+          <div className="alert-icon">
+            <i
+              className="fa fa-check-circle-o"
+              aria-hidden="true"
+              style={{ color: "#4caf50" }}
+            ></i>
+          </div>
+          <div className="alert-message">Category has been removed!</div>
+        </div>
+      );
     }
   };
 
@@ -136,7 +177,13 @@ const Category = () => {
           required
         />
       </div>
-      <button className="btn_create">New Category</button>
+      <button className="btn_create">
+        {loading && (
+          <i className="fa fa-refresh fa-spin" style={{ color: "white" }}></i>
+        )}
+        {loading && <span> Creating...</span>}
+        {!loading && <span>New Category</span>}
+      </button>
     </form>
   );
 

@@ -80,7 +80,18 @@ const PostRead = ({ username }) => {
 
   return (
     <div className="create_right">
-      {message && <div className="alert-success">{message}</div>}
+      {message && (
+        <div className="alert-success">
+          <div className="alert-icon">
+            <i
+              className="fa fa-check-circle-o"
+              aria-hidden="true"
+              style={{ color: "#4caf50" }}
+            ></i>
+          </div>
+          <div className="alert-message">{message}</div>
+        </div>
+      )}
       <h2>
         <i className="fa fa-table" aria-hidden="true"></i> Manage Lines
       </h2>

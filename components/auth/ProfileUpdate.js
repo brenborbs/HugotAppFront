@@ -273,7 +273,16 @@ const ProfileUpdate = () => {
               type="password"
             />
           </div>
-          <button className="btn_create">Update Profile</button>
+          <button className="btn_create">
+            {loading && (
+              <i
+                className="fa fa-refresh fa-spin"
+                style={{ color: "white" }}
+              ></i>
+            )}
+            {loading && <span> Updating...</span>}
+            {!loading && <span>Update Profile</span>}
+          </button>
         </form>
       </div>
     </div>

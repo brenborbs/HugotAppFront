@@ -9,10 +9,11 @@ const Tag = () => {
     success: false,
     tags: [],
     removed: false,
-    reload: false
+    reload: false,
+    loading: false
   });
 
-  const { name, error, success, tags, removed, reload } = values;
+  const { name, error, success, tags, removed, reload, loading } = values;
   const token = getCookie("token");
 
   useEffect(() => {
@@ -71,14 +72,21 @@ const Tag = () => {
 
   const clickSubmit = e => {
     e.preventDefault();
+    setValues({ ...values, loading: true, error: false });
     // console.log('create category', name);
     create({ name }, token).then(data => {
       if (data.error) {
-        setValues({ ...values, error: data.error, success: false });
+        setValues({
+          ...values,
+          error: data.error,
+          success: false,
+          loading: false
+        });
       } else {
         setValues({
           ...values,
           error: false,
+          loading: false,
           success: true,
           name: ""
           // removed: !removed,
@@ -100,19 +108,52 @@ const Tag = () => {
 
   const showSuccess = () => {
     if (success) {
-      return <div className="success">Tag has been added</div>;
+      return (
+        <div className="alert-info" style={{ marginBottom: "10px" }}>
+          <div className="alert-icon">
+            <i
+              className="fa fa-check-circle-o"
+              aria-hidden="true"
+              style={{ color: "#4caf50" }}
+            ></i>
+          </div>
+          <div className="alert-message">Tag has been added</div>
+        </div>
+      );
     }
   };
 
   const showError = () => {
     if (error) {
-      return <div className="warning">Tag already existed!</div>;
+      return (
+        <div className="alert-danger">
+          <div className="alert-icon">
+            <i
+              className="fa fa-exclamation-circle"
+              aria-hidden="true"
+              style={{ color: "#f44336" }}
+            ></i>
+          </div>
+          <div className="alert-message">Tag allready existed!</div>
+        </div>
+      );
     }
   };
 
   const showRemoved = () => {
     if (removed) {
-      return <div className="remove">Tag has been removed!</div>;
+      return (
+        <div className="alert-info" style={{ marginBottom: "10px" }}>
+          <div className="alert-icon">
+            <i
+              className="fa fa-check-circle-o"
+              aria-hidden="true"
+              style={{ color: "#4caf50" }}
+            ></i>
+          </div>
+          <div className="alert-message">Tag has been removed!</div>
+        </div>
+      );
     }
   };
 
@@ -134,7 +175,11 @@ const Tag = () => {
       </div>
       <div>
         <button type="submit" className="btn_create">
-          New Tag
+          {loading && (
+            <i className="fa fa-refresh fa-spin" style={{ color: "white" }}></i>
+          )}
+          {loading && <span> Creating...</span>}
+          {!loading && <span>New Tag</span>}
         </button>
       </div>
     </form>
