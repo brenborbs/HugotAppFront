@@ -1,5 +1,5 @@
 ---
-title: "Welcome to this hugot maker web app"
+title: "Welcome to hugot!"
 author: The Administrator
 date: 2020-03-11
 hero_image: ../static/images/hugotlanding.png

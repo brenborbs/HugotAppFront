@@ -337,6 +337,92 @@ nav ul li ul li {
   background-color: var(--lightBlu);
 }
 /*============================
+    FOOTER
+==============================*/
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px 5%;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: #111;
+  font-size: 12px;
+}
+.footer-brand {
+  cursor: pointer;
+  margin-right: auto;
+}
+.footer-links a {
+  color: rgba(255, 255, 255, 0.8);
+}
+.footer-links a:hover {
+  color: var(--SectionLightOrange);
+}
+/*============================
+            CONTACT & ABOUT
+==============================*/
+.term-info {
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+.term-body h4 {
+  margin-bottom: 16px;
+}
+.term-body p {
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+.term-body ul {
+  list-style: square;
+  padding: 16px;
+  line-height: 1.5;
+}
+.term-body li {
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+.contact-info {
+  color: black;
+  font-size: 14px;
+  text-align: center;
+}
+.about-info {
+  color: black;
+  line-height: 1.5;
+}
+.about_info h2 {
+  margin-bottom: 20px;
+}
+.about-body p {
+  padding-bottom: 14px;
+  line-height: 1.5;
+}
+.btn-footer {
+  color: white;
+  padding: 5px 20px;
+  background-color: var(--lightBlu);
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 18px;
+  margin-top: 1em;
+  width: 100%;
+}
+.contact-hero-title {
+  margin-bottom: 1rem;
+  letter-spacing: 0.1rem;
+  font-weight: 700;
+  line-height: 1.6;
+  font-family: "Playfair Display", Georgia, serif;
+}
+@media screen and (min-width: 768px) {
+  .contact-hero-title {
+    font-size: 3rem;
+  }
+}
+
+/*============================
             SIGNIN
 ==============================*/
 .signin-container {
@@ -1055,7 +1141,7 @@ select {
   }
   .modal-content {
     background-color: #fefefe;
-    margin: 15% auto;
+    margin: 8% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 50%;
@@ -1647,6 +1733,7 @@ select {
 .sm-card-prof:hover {
   opacity: 0.8;
 }
+
 /*============================
     BLOG POST 
 ==============================*/
@@ -1731,7 +1818,7 @@ select {
   font-family: "Playfair Display", Georgia, serif;
 }
 .blog-hero-text {
-  font-size: 20px;
+  font-size: 18px;
   margin: 0 auto;
   letter-spacing: var(--mainSpacing);
   font-weight: 400;

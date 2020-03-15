@@ -49,8 +49,8 @@ const SigninComponent = () => {
     setValues({ ...values, error: false, [name]: e.target.value });
   };
 
-  const showLoading = () =>
-    loading ? <div className="alert-info">Loading...</div> : "";
+  // const showLoading = () =>
+  //   loading ? <div className="alert-info">Loading...</div> : "";
 
   const showError = () =>
     error ? (
@@ -117,9 +117,9 @@ const SigninComponent = () => {
   return (
     <React.Fragment>
       <div className="login-form">
+        <LoginGoogle />
         {showError()}
         {showMessage()}
-        <LoginGoogle />
         {showForm && siginForm()}
         <div className="login-links">
           <p>

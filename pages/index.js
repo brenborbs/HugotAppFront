@@ -16,6 +16,31 @@ const Index = () => {
           </Link>
         </div>
       </div>
+      <footer className="footer">
+        <p className="footer-brand">
+          {" "}
+          hugot! © {new Date().getFullYear()} hugot.com{" "}
+        </p>
+        <div className="footer-container">
+          <ul className="footer-links">
+            <Link href="/about">
+              <a>About </a>
+            </Link>
+            /
+            <Link href="/contact">
+              <a> Contact </a>
+            </Link>
+            /
+            <Link href="/term">
+              <a> Terms </a>
+            </Link>
+            /
+            <Link href="/policy">
+              <a> Policy</a>
+            </Link>
+          </ul>
+        </div>
+      </footer>
     </Layout>
   );
 };

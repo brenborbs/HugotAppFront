@@ -117,7 +117,7 @@ const SignupComponent = () => {
         <div className="policy">
           <p>
             By clicking Register, you agree to our{" "}
-            <Link href="/terms">
+            <Link href="/term">
               <a>terms</a>
             </Link>{" "}
             .

@@ -1,40 +1,14 @@
-import * as React from "react";
-import matter from "gray-matter";
-import ReactMarkdown from "react-markdown";
+import Layout from "../components/Layout";
+import ContactForm from "../components/form/ContactForm";
 import Link from "next/link";
-import Layout from "../../components/Layout";
 import Head from "next/head";
-import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../config";
-import Search from "../../components/post/Search";
+import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../config";
+import Search from "../components/post/Search";
 
-// Social media share
-import {
-  FacebookShareButton,
-  FacebookIcon,
-  FacebookShareCount,
-  TwitterShareButton,
-  TwitterIcon,
-  PinterestShareButton,
-  PinterestIcon
-  // EmailShareButton,
-  // EmailIcon,
-  // WhatsappShareButton,
-  // WhatsappIcon
-} from "react-share";
-
-export default function BlogTemplate(props, router) {
-  function reformatDate(fullDate) {
-    const date = new Date(fullDate);
-    return date.toDateString().slice(4);
-  }
-  // data from getInitialProps
-  const markdownBody = props.content;
-  const frontmatter = props.data;
+const Contact = router => {
   const head = () => (
     <Head>
-      <title>
-        {`${frontmatter.title}`} | {APP_NAME}
-      </title>
+      <title>Contact hugot | {APP_NAME}</title>
       <meta
         name="description"
         content="Collection of best hugot lines. Bisaya, Tagalog at iba pa."
@@ -61,49 +35,6 @@ export default function BlogTemplate(props, router) {
       <meta property="fb:app_id" content={`${FB_APP_ID}`} />
     </Head>
   );
-  const showReactShareIcons = () => {
-    return (
-      <div className="Demo__container">
-        <div className="Demo__some-network">
-          <FacebookShareButton
-            url={`${API}/blog/${articles.slug}`}
-            quote={frontmatter.title}
-            className="Demo__some-network__share-button"
-          >
-            <FacebookIcon size={32} round={false} />
-          </FacebookShareButton>
-        </div>
-        <div className="Demo__some-network">
-          <TwitterShareButton
-            url={`${API}/blog/${articles.slug}`}
-            quote={frontmatter.title}
-            className="Demo__some-network__share-button"
-          >
-            <TwitterIcon size={32} round={false} />
-          </TwitterShareButton>
-        </div>
-        <div className="Demo__some-network">
-          <PinterestShareButton
-            url={`${API}/blog/${articles.slug}`}
-            windowWidth={750}
-            windowHeight={600}
-            className="Demo__some-network__share-button"
-          >
-            <PinterestIcon size={32} round={false} />
-          </PinterestShareButton>
-        </div>
-      </div>
-    );
-  };
-
-  const MyParagraph = props => (
-    <p style={{ marginBottom: "10px", marginTop: "10px" }}>{props.children}</p>
-  );
-
-  // see https://github.com/rexxars/react-markdown#node-types
-  const renderers = {
-    paragraph: props => <MyParagraph {...props} />
-  };
 
   return (
     <React.Fragment>
@@ -113,8 +44,8 @@ export default function BlogTemplate(props, router) {
           <div className="wrapper__quote">
             <div className="blog-hero">
               <div className="blog-hero-banner">
-                <h3 className="blog-hero-title">{frontmatter.title}</h3>
-                <p className="blog-hero-text"> {frontmatter.author}</p>
+                <h1 className="contact-hero-title">Contact</h1>
+                <p className="blog-hero-text"></p>
                 {/* {showReactShareIcons()} */}
               </div>
             </div>
@@ -124,11 +55,11 @@ export default function BlogTemplate(props, router) {
                   <div className="article left_wrapper">
                     <section className="left_card_blog">
                       <h1 className="about_info">
-                        <span className="about_title">Details</span>
+                        <span className="about_title"></span>
                       </h1>
-                      <p className="about-author">
-                        {" "}
-                        {reformatDate(frontmatter.date)}
+                      <p className="contact-info">
+                        If you have any general questions or inquiries? Please
+                        get in touch!
                       </p>
                       <p
                         style={{
@@ -136,18 +67,9 @@ export default function BlogTemplate(props, router) {
                           marginTop: "0",
                           marginBottom: "1rem"
                         }}
-                      >
-                        <img
-                          src={frontmatter.hero_image}
-                          alt={`blog_hero_${frontmatter.title}`}
-                          style={{ width: "100%", height: "auto" }}
-                        />
-                      </p>
+                      ></p>
                       <div className="blog-body">
-                        <ReactMarkdown
-                          source={markdownBody}
-                          renderers={renderers}
-                        />
+                        <ContactForm />
                       </div>
                     </section>
                   </div>
@@ -195,16 +117,6 @@ export default function BlogTemplate(props, router) {
       </Layout>
     </React.Fragment>
   );
-}
-
-BlogTemplate.getInitialProps = async function(context) {
-  // context contains the query param
-  const { slug } = context.query;
-  // grab the file in the articles dir based on the slug
-  const content = await import(`../articles/${slug}.md`);
-  //gray-matter parses the yaml frontmatter from the md body
-  const data = matter(content.default);
-  return {
-    ...data
-  };
 };
+
+export default Contact;

@@ -1,6 +1,6 @@
 import Head from "next/head";
-import Link from "next/link";
-import { withRouter, useRouter } from "next/router";
+// import Link from "next/link";
+import { withRouter } from "next/router";
 import Layout from "../../components/Layout";
 import { useState } from "react";
 import { listPostsWithCategoriesAndTags } from "../../actions/post";
@@ -47,8 +47,6 @@ const Posts = ({ posts, totalPosts, postsLimit, postSkip, router }) => {
   const [size, setSize] = useState(totalPosts);
   const [loadedPosts, setLoadedPosts] = useState([]); // empty area
 
-  const routering = useRouter();
-
   const loadMore = () => {
     let toSkip = skip + limit;
     listPostsWithCategoriesAndTags(toSkip, limit).then(data => {
@@ -72,18 +70,6 @@ const Posts = ({ posts, totalPosts, postsLimit, postSkip, router }) => {
       )
     );
   };
-
-  // If the page is not yet generated, this will be displayed
-  // initially until getStaticProps() finishes running
-  if (routering.isFallback) {
-    return (
-      <div id="banner">
-        <div className="banner-text">
-          <h1>Loading...</h1>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <React.Fragment>

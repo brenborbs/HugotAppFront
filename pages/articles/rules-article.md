@@ -2,7 +2,7 @@
 title: "Posting rules to go by"
 author: The Administrator
 date: 2020-04-28
-hero_image: ../static/images/noah-silliman.jpg
+hero_image: ../static/images/samplepost.png
 ---
 
 We highly encouraged all users to follow proper posting manners.
