@@ -238,7 +238,7 @@ const PostUpdate = ({ router }) => {
   );
 
   return (
-    <div className="create-right">
+    <label className="create-right">
       {showError()}
       {showSuccess()}
       <form onSubmit={editPost}>
@@ -283,19 +283,19 @@ const PostUpdate = ({ router }) => {
             placeholder="Name of hugot line writer..."
           ></input>
         </div>
+        <h3 style={{ marginBottom: "20px" }}>3. Categories and Tags</h3>
+        <div className="tags-cat-form-wrapper" style={{ marginBottom: "50px" }}>
+          <div className="form-checkbox">
+            <label className="label_inputs">Category</label>
+            {showCategories()}
+          </div>
 
-        <div className="form-checkbox">
-          <h3>3. Categories and Tags</h3>
-          <label className="label_inputs">Category</label>
-          {showCategories()}
+          <div className="form-checkbox">
+            <label className="label_inputs">Tags</label>
+            {showTags()}
+          </div>
         </div>
-
-        <div className="form-checkbox" style={{ marginBottom: "50px" }}>
-          <label className="label_inputs">Tags</label>
-          {showTags()}
-        </div>
-
-        <div className="form-group">
+        <label className="form-group">
           <h3>4. Source and Verification</h3>
           <label className="label_inputs">Source</label>
           <select onChange={handleChange("source")}>
@@ -303,7 +303,7 @@ const PostUpdate = ({ router }) => {
             <option value="0">Unsourced</option>
             <option value="1">Sourced</option>
           </select>
-        </div>
+        </label>
 
         <div className="form-group">
           <label className="label_inputs">Verification</label>
@@ -322,7 +322,7 @@ const PostUpdate = ({ router }) => {
           {!loading && <span>Update Line</span>}
         </button>
       </form>
-    </div>
+    </label>
   );
 };
 

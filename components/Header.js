@@ -98,6 +98,11 @@ const Header = () => {
                   </li>
                 </Link>
               )}
+              <Link href="/contact">
+                <li>
+                  <a style={{ textAlign: "left" }}>Contact</a>
+                </li>
+              </Link>
               {!isAuth() && (
                 <Link href="/signin">
                   <li>

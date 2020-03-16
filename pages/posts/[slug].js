@@ -29,14 +29,21 @@ const SinglePost = ({ post, query }) => {
 
   // Loader
   const [modalOpen, setModalOpen] = useState(false);
+  const [verifyOpen, setVerifyOpen] = useState(false);
 
   const toggleModal = () => {
     // console.log("i was click!");
     setModalOpen(!modalOpen);
   };
+  const toggleVerify = () => {
+    setVerifyOpen(!verifyOpen);
+  };
   const closeModal = () => {
     // console.log("i was click!");
     setModalOpen(!modalOpen);
+  };
+  const closeVerify = () => {
+    setVerifyOpen(!verifyOpen);
   };
 
   const loadRelated = () => {
@@ -253,13 +260,57 @@ const SinglePost = ({ post, query }) => {
                         </div>
                       </div>
                       <div className="long_btn">
-                        <button className="grey_outline">
+                        <button className="grey_outline" onClick={toggleVerify}>
                           {post.verification ? (
-                            <span className="btn_title">Verified</span>
+                            <p className="btn_title">Verified</p>
                           ) : (
-                            <span className="btn_title">Unverified</span>
+                            <p className="btn_title">Unverified</p>
                           )}
                         </button>
+                      </div>
+                      <div className={verifyOpen ? "verifymodal" : "none"}>
+                        <div className="verifymodal-content">
+                          <div className="verify-header">
+                            <h2>Alam mo ba?</h2>
+                          </div>
+                          <div className="verify-content">
+                            <p>
+                              We at hugot always value accuracy, and one of our
+                              main principles is to keep factual records in both
+                              casual and academic settings.
+                            </p>
+                            <p>
+                              To help us achieve this goal, please feel free to
+                              suggest an edit if a hugot line on our site is
+                              displaying insufficient or inaccurate information.
+                            </p>
+                            <p>
+                              If a particular hugot line has been researched and
+                              validated by hugot, the label below each hugot
+                              line will confirm it as being verified.
+                            </p>
+                            {post.verification ? (
+                              <p>
+                                This hugot line has been Verified by our writers
+                                and may be own by the creator themselves and/or
+                                others.
+                              </p>
+                            ) : (
+                              <p>
+                                Unfortunately this hugot line has not been
+                                officially verified by our editors. But be sure
+                                to check back in the future, as we're constantly
+                                adding documentation to our database
+                              </p>
+                            )}
+                          </div>
+                          <button
+                            className="btn-verify-close"
+                            onClick={closeVerify}
+                          >
+                            Close
+                          </button>
+                        </div>
                       </div>
                     </section>
                   </div>

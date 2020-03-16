@@ -6,6 +6,7 @@ import { getCookie, isAuth } from "../../actions/auth";
 import { getCategories } from "../../actions/category";
 import { getTags } from "../../actions/tag";
 import { createPost } from "../../actions/post";
+// import ReactDropzone from "react-dropzone";
 
 const PostCreate = ({ router }) => {
   // Show ctegories and tags
@@ -197,6 +198,10 @@ const PostCreate = ({ router }) => {
     </div>
   );
 
+  // const onDrop = files => {
+  //   setValues({ files });
+  // };
+
   return (
     // <React.fragment>
 
@@ -208,7 +213,7 @@ const PostCreate = ({ router }) => {
           <div className="form-group" style={{ marginBottom: "50px" }}>
             <h3>1. Select Photo</h3>
             <label className="label_inputs">
-              <i className="fa fa-file-image-o" aria-hidden="true"></i>Photo
+              <i className="fa fa-file-image-o" aria-hidden="true"></i> Photo
             </label>
             <small className="text-muted">Max size: 1mb</small>
             <input
@@ -218,6 +223,21 @@ const PostCreate = ({ router }) => {
               className="file_input"
               required
             />
+            {/* <ReactDropzone onDrop={onDrop} accept="image/png, image/jpeg">
+              {({
+                getRootProps,
+                getInputProps,
+                isDragActive,
+                isDragReject
+              }) => (
+                <div {...getRootProps()}>
+                  <input {...getInputProps()} />
+                  {!isDragActive && "Click here or drop a file to upload!"}
+                  {isDragActive && !isDragReject && "Drop it like it's hot!"}
+                  {isDragReject && "File type not accepted, sorry!"}
+                </div>
+              )}
+            </ReactDropzone> */}
           </div>
           <div className="form-group">
             <h3>2. Content</h3>
@@ -247,16 +267,20 @@ const PostCreate = ({ router }) => {
               placeholder="Name of hugot line writer..."
             ></input>
           </div>
+          <h3 style={{ marginBottom: "20px" }}>3. Categories and Tags</h3>
+          <div
+            className="tags-cat-form-wrapper"
+            style={{ marginBottom: "50px" }}
+          >
+            <div className="form-checkbox">
+              <label className="label_inputs">Category</label>
+              {showCategories()}
+            </div>
 
-          <div className="form-checkbox">
-            <h3>3. Categories and Tags</h3>
-            <label className="label_inputs">Category</label>
-            {showCategories()}
-          </div>
-
-          <div className="form-checkbox" style={{ marginBottom: "50px" }}>
-            <label className="label_inputs">Tags</label>
-            {showTags()}
+            <div className="form-checkbox">
+              <label className="label_inputs">Tags</label>
+              {showTags()}
+            </div>
           </div>
 
           <div className="form-group">
